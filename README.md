@@ -5,7 +5,7 @@
 
 The Movie Search App is a simple web application for searching movies using The Movie Database (TMDb) API.
 
-You can try the application [here](https://veggierecipefinder.netlify.app/).
+You can try the application [here](https://moviiefinderapp.netlify.app/).
 
 
 ## Features
