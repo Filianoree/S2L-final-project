@@ -1,0 +1,32 @@
+.background {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #cfd9df 0%, #e2ebf0 100%);
+  min-height: 100vh;
+}
+
+.background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: -1;
+  pointer-events: none;
+  animation: animateBackground 20s linear infinite;
+}
+
+.background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #5e92f3 0%, #f1556c 100%);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+}
