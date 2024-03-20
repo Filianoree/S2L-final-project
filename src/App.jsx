@@ -1,9 +1,18 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import SearchBar from "./components/SearchBar";
 import MovieList from "./components/MovieList";
-import { AppBar, Toolbar, Typography, Container, Box } from "@mui/material";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
+import MoviePage from "./pages/MoviePage";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Container,
+  Box,
+  colors,
+} from "@mui/material";
+import Footer from "./pages/Footer";
+import Home from "./pages/Home";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -40,8 +49,21 @@ function App() {
         </Container>
       </AppBar>
       <Container maxWidth="lg" sx={containerStyle}>
-        <Home onSearch={handleSearch} />
-        <MovieList query={query} />
+        <Home />
+        <div>
+          <Routes>
+            <Route
+              path={
+                window.location.pathname !== "/movie/:movieId"
+                  ? "/"
+                  : "/movie/:movieId"
+              }
+              element={<MovieList query={query} />}
+            />
+
+            <Route path="/movie/:movieId" element={<MoviePage />} />
+          </Routes>
+        </div>
       </Container>
       <Footer />
     </div>

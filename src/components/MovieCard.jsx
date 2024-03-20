@@ -1,23 +1,14 @@
-import React, { useState } from "react";
+// MovieCard.js
+import React from "react";
+import { Link } from "react-router-dom";
 import { Card, CardMedia, Typography } from "@mui/material";
-import MovieDialog from "./MovieDialog";
 
 function MovieCard({ movie }) {
   const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   return (
-    <>
+    <Link to={`/movie/${movie.id}`} style={{ textDecoration: "none" }}>
       <Card
-        onClick={handleOpen}
         sx={{
           maxWidth: 345,
           height: 500,
@@ -46,8 +37,7 @@ function MovieCard({ movie }) {
           {movie.title}
         </Typography>
       </Card>
-      <MovieDialog movie={movie} open={open} handleClose={handleClose} />
-    </>
+    </Link>
   );
 }
 

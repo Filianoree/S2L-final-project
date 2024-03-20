@@ -15,6 +15,18 @@ const Api = {
     return response.data.results;
   },
 
+  async getMovieDetails(movieId) {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}`,
+      {
+        params: {
+          api_key: API_KEY,
+        },
+      }
+    );
+    return response.data;
+  },
+
   async getMovieCredits(movieId) {
     const response = await axios.get(
       `https://api.themoviedb.org/3/movie/${movieId}/credits`,
