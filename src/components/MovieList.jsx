@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import MovieCard from "./MovieCard";
 import { CircularProgress, Grid, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async"; // Importa Helmet
 import Api from "./Api";
+import MovieCard from "./MovieCard";
 
 function MovieList({ query }) {
   const [movies, setMovies] = useState([]);
@@ -34,13 +36,24 @@ function MovieList({ query }) {
 
   return (
     <div style={{ padding: "20px" }}>
+      {/* Utilizziamo Helmet per impostare il titolo della pagina in base alla query di ricerca */}
+      <Helmet>
+        <title>
+          {query ? `Search results for "${query}"` : "Movie Finder"}
+        </title>
+      </Helmet>
       {loading ? (
         <CircularProgress />
       ) : movies.length > 0 ? (
         <Grid container spacing={3}>
           {movies.map((movie) => (
             <Grid key={movie.id} item xs={12} sm={6} md={4} lg={3}>
-              <MovieCard movie={movie} />
+              <Link
+                to={`/movie/${movie.id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <MovieCard movie={movie} />
+              </Link>
             </Grid>
           ))}
         </Grid>

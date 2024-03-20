@@ -16,7 +16,6 @@ function SearchBar({ onSearch, appBarStyle }) {
 
   return (
     <Box sx={{ display: "flex", alignItems: "center", ...appBarStyle }}>
-      {/* Utilizziamo lo stile dell'appBar passato come prop */}
       <TextField
         label="Search Movies"
         value={searchTerm}
